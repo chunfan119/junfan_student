@@ -1,0 +1,55 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int m=5,n=4;
+    cin>>m>>n;
+    vector<vector<int>> ground(m,vector<int>(n));
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            cin>>ground[i][j];
+        }
+    }
+    // vector<vector<int>> ground={
+    //     {0,1,1,1},
+    //     {0,0,0,0},
+    //     {1,1,1,0},
+    //     {1,0,0,1},
+    //     {1,1,1,0}
+    // };
+    
+    int cot=0;
+    for(int i=0;i<=m-3;i++){
+        for(int j=0;j<=n-3;j++){
+            if(ground[i][j]==1){
+                for(int x=0;x<3;x++){
+                    for(int y=0;y<3;y++){
+                        if(ground[i+x][j+y]==0){
+                            ground[i+x][j+y]=1;
+                        }else{
+                            ground[i+x][j+y]=0;
+                        }
+                    }
+                }
+                cot+=1;
+            }
+        }
+        
+    }
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if(ground[i][j]==1){
+                cout<<-1;
+                // cout<<cot;
+                return 0;
+            }
+            
+            
+        }
+    }
+    cout<<cot;
+    
+    return 0;
+}
