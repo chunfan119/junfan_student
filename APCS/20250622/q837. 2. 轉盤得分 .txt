@@ -1,0 +1,119 @@
+#include <bits/stdc++.h>
+using namespace std;
+static int  m=3,k=6,n=2;
+struct aabcd{
+    int id;
+    string name;
+};
+// 
+void to_right(int times,vector<char> &vec){
+        char store;
+    ///先寫右迴
+        int n=vec.size();
+        times%=n;
+        for(int i=0;i<times;i++){
+            store=vec[vec.size()-1];
+            vec.pop_back();
+            vec.insert(vec.begin(),store);
+        }
+}
+void to_left(int times,vector<char> &vec){
+        char store;
+    ///先寫左迴
+        int n=vec.size();
+        times%=n;
+        for(int i=0;i<times;i++){
+            store=vec[0];
+            vec.erase(vec.begin());
+            vec.push_back(store);
+        }
+}
+
+int score(vector<vector<char>> circles){
+    int tot=0;    
+    for(int i=0;i<k;i++){
+        
+        unordered_map<char,int> freq;
+        int MAXnum=0;
+        for (int j=0;j<m;j++){
+            
+            char word;
+            word=circles[j][i];
+            freq[word]++;
+            MAXnum=max(MAXnum,freq[word]);
+            
+             //cout<<circles[j][i]<<" "<<word<<" "<<MAXnum;
+        }
+        
+         //cout<<MAXnum<<endl;
+        tot+=MAXnum;
+    }
+    return tot;
+}
+
+
+int main() {
+    // vector<char> a=;
+    int ans=0;
+    cin>>m>>k>>n;
+    //vector <int>act;
+    // act={1,0,-4,7,-3,2};
+    vector<vector<char>> circles(m, vector<char>(k));
+    vector<vector<int>> act(n, vector<int>(m));
+    // 3 6 2
+    // apcsie
+    // taiwan
+    // icpeda
+    // 1 0 -4
+    // 7 -3 2
+
+    for(int i=0;i<m;i++){
+        for(int j=0;j<k;j++){
+            cin>>circles[i][j];
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>act[i][j];
+        }
+    }
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<m;j++){
+    //         cout<<act[i][j];
+    //     }
+    //     cout<<endl;
+    // }
+    // return 0;
+    // 手動填入資料
+    // circles[0] = {'a', 'p', 'c', 's', 'i', 'e'};
+    // circles[1] = {'t', 'a', 'i', 'w', 'a', 'n'};
+    // circles[2] = {'i', 'c', 'p', 'e', 'd', 'a'};
+    // act[0]={1,0,-4};
+    // act[1]={7,-3,2};
+    
+    for(int i=0;i<n;i++){
+        for(int j =0;j<m;j++){
+            if(act[i][j]<0){
+                to_left(act[i][j]*-1,circles[j]);
+            }
+            else if(act[i][j]>0){
+                to_right(act[i][j],circles[j]);
+            }
+        }
+        //這裡開始算分
+        ans+=score(circles);
+    }
+
+    // for(int i=0;i<m;i++){
+    //     for(int j=0;j<k;j++){
+    //         cout<<circles[i][j];
+    //     }
+    //     cout<<endl;
+    // }
+    
+    cout<<ans;
+    return 0;
+    
+    
+    
+}
