@@ -1,0 +1,71 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+void p(vector<vector<char>> vec){
+    for(auto c:vec){
+        for(char k:c){
+            cout<<k;
+            
+        }
+        cout<<endl;
+    }
+}
+void p2(vector<vector<int>> vec){
+    for(auto c:vec){
+        for(int k:c){
+            cout<<k;
+            
+        }
+        cout<<endl;
+    }
+}
+
+int main(){
+
+    int K=4,Q=3,R=4;
+    cin>>K>>Q>>R;
+    cin.ignore();
+    string line;
+    //line="abac";
+    getline(cin,line);
+    //cout<<line;
+     //return 0;
+    //cin.ignore();
+    char store;
+    vector<vector<int>> num(Q,vector<int>(K));
+    vector<vector<char>> img(Q,vector<char>(K));
+    vector<char> st;
+    //return 0;
+    // cin.ignore();
+    for(char c:line){
+        st.push_back(c);
+    }
+    
+    for(int i=0;i<Q;i++){
+        for(int j=0;j<K;j++){
+            cin>>num[i][j];
+        }
+    }
+    
+    // p2(num);
+    // return 0;
+    for(int i=0;i<Q;i++){
+        for(int j=0;j<K;j++){
+            img[i][num[i][j]-1]=st[j];
+        
+        }
+        st=img[i];
+        
+        
+        
+    }
+    
+    // p2(num);
+    // p(img);
+    for(int i=0;i<R;i++){
+        for(int j=0;j<Q;j++){
+            cout<<img[j][i];
+        }
+        cout<<endl;
+    }
+}
