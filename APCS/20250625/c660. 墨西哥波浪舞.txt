@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    string line;
+    getline(cin,line);
+    vector<char> dance;
+    for(char k:line){
+        dance.push_back(tolower(k));
+    }
+    for(int i=0;i<dance.size();i++){
+        for(int j=0;j<dance.size();j++){
+            // if(i==j&&dance[j]==' ')continue;
+            if(i==j){
+                if(dance[j]==' '){
+                    cout<<" ";
+                    j++;
+                    i++;
+                }
+                char t=toupper(dance[j]);
+                cout<<t;//toupper(dance[j]);
+            }else{
+                cout<<dance[j];
+            }
+        }
+        cout<<endl;
+    }
+}

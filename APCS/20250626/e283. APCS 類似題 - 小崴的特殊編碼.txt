@@ -1,0 +1,35 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    // Write C++ code here
+    //std::cout << "Try programiz.pro";
+    string ind;
+    string out;
+    int n;
+    while(cin>>n){
+        cin.ignore();
+
+        for(int i=0;i<n;i++)
+        {
+            getline(cin,ind);
+            //cout << ind <<" "<<ind[0];
+            int val=0;
+            if(ind[0]=='1') val|=0x08;
+            if(ind[2]=='1') val|=0x04;
+            if(ind[4]=='1') val|=0x02;
+            if(ind[6]=='1') val|=0x01;
+            //cout << val;
+            if(val == 5) out+='A';
+            else if(val == 7) out+='B';
+            else if(val == 2) out+='C';
+            else if(val == 13) out+='D';
+            else if(val == 8) out+='E';
+            else if(val == 12) out+='F';   
+        }
+        cout << out << endl;
+        out ="";
+        //out.clear();
+    }
+ 
+}

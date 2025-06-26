@@ -1,0 +1,67 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+void p(vector<vector<char>> &vec){
+    for(vector<char> c:vec){
+        for(char k:c){
+            cout<<k;
+        }
+        cout<<endl;
+    }
+    return; 
+}
+int main() {
+    // Write C++ code here
+    //std::cout << "Try programiz.pro";
+    int times;
+    cin>>times;
+    cin.ignore();
+    
+    vector<vector<char>> vs(times);
+    for (int i=0;i<times;i++){
+        string line;
+        getline(cin,line);
+        for(char c: line){
+            vs[i].push_back(c);
+        }
+    }
+    //p(vs);
+    //return 0;
+    for(int j=0;j<times;j++){
+    //vs.push_back({'-','1','2','o','2',' ','-','1','0'});
+    //vs.push_back({'-','1','2'});
+    vector<int> vi;
+    string str;
+    int cs=0;
+    bool nt=false;
+    for(char c:vs[j])
+    {
+        if(isdigit(c) || nt==true || (cs==0 && c=='-') ){
+          str+=c;
+          nt=false;
+        }
+        else
+        {
+        int a=stoi(str);
+        vi.push_back(a);
+        str="";
+        nt = true;
+        }
+        cs++;
+    }
+    //last one
+    int a=stoi(str);
+    vi.push_back(a);
+    //cout << a << ' ';
+    // for(int i:vi)
+    // {
+    //     cout << i <<' ';
+    // }
+    int ans=vi[0];
+    for(int i=1;i<vi.size();i++)
+     ans*=vi[i];
+    cout << ans<<endl; 
+    vi.clear();
+    }
+
+}

@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    
+    
+    
+    string line;
+    while(getline(cin,line)){
+        // cin.ignore();
+        int count=0;
+        unordered_map<char,int> mem;
+        vector<char> input;
+        for (char k:line){
+            if(isalpha(k)){
+                input.push_back(tolower(k));
+            }
+        }
+        for (char k:input){
+            mem[k]++;
+        }
+        for (auto k:mem){
+            if (k.second%2==0){
+                continue;
+            }else{
+                count+=1;
+            }
+        }
+        
+        if (count<=1){
+            cout<<"yes !"<<endl;
+        }
+        else{
+            cout<<"no..."<<endl;
+        }
+    
+    
+    }
+    
+    
+    
+    
+}

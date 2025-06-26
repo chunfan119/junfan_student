@@ -1,0 +1,33 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    string line;
+    line="This is 'plaintext'.";
+    getline(cin,line);
+    int num=7;
+    cin>>num;
+    
+    for(char c:line){
+        if(isupper(c)){
+            if(c+num>'Z'){
+                cout<<(char)('@'+(c+num-'Z'));
+            }
+            else{
+                cout<<char(c+num);
+            }
+        }
+        else if(islower(c)){
+            if(c+num>'z'){
+                cout<<(char)('a'+(c+num-'z')-1);
+            }
+            else{
+                cout<<char(c+num);
+            }
+        }
+        else{
+            cout<<c;
+        }
+    }
+    
+}
