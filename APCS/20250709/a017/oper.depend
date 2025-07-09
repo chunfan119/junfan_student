@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1752046589 source:d:\chun\0709\oper\main.cpp
+	<iostream>
+	<stack>
+	<cctype>
+	<string>
+
