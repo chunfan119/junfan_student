@@ -1,3 +1,7 @@
+20250714 add:
+a693. 吞食天地
+e447. queue 練習
+
 20250709 add:
 c471. apcs 物品堆疊 (Stacking) -- apcs
 a017. 五則運算	
